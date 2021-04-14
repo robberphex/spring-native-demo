@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -21,6 +22,7 @@ class ExampleController {
             HttpClient client = HttpClientBuilder.create().build();
             HttpResponse response = client.execute(new HttpGet("http://myip.ipip.net"));
             currentZone = EntityUtils.toString(response.getEntity());
+            currentZone = StringUtils.strip(currentZone);
         } catch (Exception e) {
             e.printStackTrace();
             currentZone = e.getMessage();
