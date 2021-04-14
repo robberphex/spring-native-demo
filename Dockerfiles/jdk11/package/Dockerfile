@@ -1,8 +1,8 @@
+# docker build . -f Dockerfiles/jdk11/package/Dockerfile -t package
 FROM build:latest as build
 
 FROM alpine:3.13
 
-RUN echo "\nhttps://mirrors.tuna.tsinghua.edu.cn/alpine/edge/\n" >> /etc/apk/repositories
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
 RUN apk add curl vim iproute2
 

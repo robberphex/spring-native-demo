@@ -1,5 +1,5 @@
+# docker build . -f Dockerfiles/jdk11/native-image/Dockerfile -t graalvm-ce:java11-21.0.0.2-native-image
 # https://github.com/orgs/graalvm/packages/container/graalvm-ce/versions
-#FROM registry.cn-hangzhou.aliyuncs.com/luyanbo/graalvm-ce:java11-21.0.0.2
 FROM ghcr.io/graalvm/graalvm-ce:java11-21.0.0.2
 
 RUN gu install native-image
