@@ -1,0 +1,16 @@
+# spring-cloud-alibaba的示例
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: mse-e7b82440-p.nacos-ans.mse.aliyuncs.com
+        access-key: ak
+        secret-key: sk
+  application:
+    name: sc-B
+    admin:
+      enabled: false
+      config:
+        file-extension:
+        access-key: ak
+        secret-key: sk
