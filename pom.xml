@@ -61,7 +61,8 @@
 				<configuration>
 					<!-- The native image build needs to know the entry point to your application -->
 					<mainClass>com.example.demo.DemoApplication</mainClass>
-					<buildArgs>--enable-https --enable-http --no-fallback --static --libc=musl</buildArgs>
+					<buildArgs>--enable-https --enable-http --no-fallback</buildArgs>
+					<imageName>${project.artifactId}</imageName>
 				</configuration>
 				<executions>
 					<execution>
