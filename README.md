@@ -13,34 +13,28 @@ Spring Native 的目标是寻找 Spring JVM 的替代方案，提供一个能将
 
 ## 如何构建
 
-1. 构建出native-image镜像（包含graalvm、msul-gcc）
+构建`sc-B`:
 ```shell
-docker build . -f Dockerfiles/jdk11/build/Dockerfile -t build
-```
-2. 构建出build镜像（包含代码以及构建好的二机制文件）
-```shell
-docker build . -f Dockerfiles/jdk11/build/Dockerfile -t build
-```
-3. 构建出package镜像（只包含最终的二进制文件）
-```shell
-docker build . -f Dockerfiles/jdk11/package/Dockerfile -t package
+pushd sc-B
+bash -x build.sh
+popd
 ```
 
-这样就得到了`package:latest`镜像，可以直接运行了：
+这样就得到了`sc-b:0.0.1-SNAPSHOT`镜像，可以直接运行了：
 ```shell
-docker run -p 8080:8080 package:latest
+docker run -p 20002:20002 sc-b:0.0.1-SNAPSHOT
 ```
-启动时间 1ms :
+启动时间 53ms :
 ![](./img/startup.png)
 
 可以访问接口验证下：
 ```shell
-$ curl localhost:8080/
-{"timestamp":"2021-04-14T08:28:42.099+00:00","status":404,"error":"Not Found","message":"","path":"/"}
-$ curl localhost:8080/b
-B[172.17.0.2]
-$ curl localhost:8080/b-get-zone
-B[当前 IP：4x.1xx.7x.9x  来自于：中国 XX XX  XXX]
+/ # curl localhost:20002/
+{"timestamp":"2021-09-13T07:42:27.679+00:00","status":404,"error":"Not Found","path":"/"}
+/ # curl localhost:20002/b
+B[127.0.0.1]
+/ # curl localhost:20002/b-get-zone
+B[cn-zhangjiakou-c]
 ```
 
 当然，您可以通过Kubernetes方式来部署最终的镜像。
