@@ -1,5 +1,5 @@
 # https://github.com/orgs/graalvm/packages/container/graalvm-ce/versions
-FROM ghcr.io/graalvm/graalvm-ce:java11-21.0.0.2 as build
+FROM ghcr.io/graalvm/graalvm-ce:java11-21.2 as build
 
 RUN gu install native-image
 
